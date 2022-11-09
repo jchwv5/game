@@ -1,12 +1,13 @@
 import {useEffect, useState} from 'react';
 import buildDeck from '../deck/deck';
 import shuffle from '../deck/shuffle';
+import { dealAllPlayers } from './gameHelpers';
 
 const Game = () => {
-    const [playerOneHand] = useState([]);
-    const [playerTwoHand] = useState([]);
-    const [playerThreeHand] = useState([]);
-    const [playerfourHand] = useState([]);
+    const [playerOneHand, setPlayerOneHand] = useState([]);
+    const [playerTwoHand, setPlayerTwoHand] = useState([]);
+    const [playerThreeHand, setPlayerThreeHand] = useState([]);
+    const [playerfourHand, setPlayerFourHand] = useState([]);
     const [deck, setDeck] = useState([]);
 
     useEffect(() => {
@@ -15,7 +16,14 @@ const Game = () => {
 
     const startGame = () => {
         setDeck(shuffle(deck))
-        
+        dealAllPlayers(
+            playerOneHand,
+            playerTwoHand,
+            playerThreeHand,
+            playerfourHand,
+            5,
+            deck
+        )
     }
 
     return (
