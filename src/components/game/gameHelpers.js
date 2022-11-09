@@ -57,12 +57,12 @@ export function startGame(setDeck,
     setPlayerThreeHand,
     playerFourHand, 
     setPlayerFourHand,
-    deck) {
+    ) {
+        let deck = buildDeck();
         playerOneHand.length = 0;
         playerTwoHand.length = 0;
         playerThreeHand.length = 0;
         playerFourHand.length = 0;
-        setDeck(buildDeck);
         dealAllPlayers(
             playerOneHand,
             playerTwoHand,
@@ -74,8 +74,10 @@ export function startGame(setDeck,
     sortHand(playerOneHand, setPlayerOneHand);
     sortHand(playerTwoHand, setplayerTwoHand);
     sortHand(playerThreeHand, setPlayerThreeHand);
-    sortHand(playerFourHand, setPlayerFourHand);
+    sortHand(playerFourHand, setPlayerFourHand);    
+    setDeck(deck);
 }
+
 /**
  * Sorts the specified playerHand by suit, then by card value
  * @param {*} playerHand 

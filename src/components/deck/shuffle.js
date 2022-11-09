@@ -11,6 +11,7 @@ const shuffle = (deck) => {
         deck[i] = deck[j];
         deck[j] = x;
     }
+    
 return deck;
 }
 export default shuffle;
