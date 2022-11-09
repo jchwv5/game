@@ -19,6 +19,22 @@ const buildDeck = () => {
         "King",
         "Ace"
       ];
+    
+    const values = [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        10,
+        10,
+        10,
+        15
+    ]
 
     const suits = [
       "Diamonds",
@@ -26,17 +42,20 @@ const buildDeck = () => {
       "Clubs",
       "Spades"
       ];
-       for (let i = 0; i < suits.length; i++) {
-        for (let n = 0; n < cards.length; n++) {
-                let card = {
-                    card: cards[n],
-                    suit: suits[i],
-                }
-                deck.push(card);
-            }
-            shuffle(deck);
-        }
-        return deck;
+
+    
+      for (var i = 0; i < 52; i++) {
+        deck.push({
+          suitIndex: Math.floor(i / cards.length),
+          suit: suits[Math.floor(i / cards.length)],
+          cardValue: values[i % values.length],
+          card: cards[i % cards.length]
+        });
+      }
+    
+  shuffle(deck);
+      
+   return deck;
 }
 
 export default buildDeck;

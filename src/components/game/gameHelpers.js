@@ -32,4 +32,5 @@ export function startGame(setDeck,
             5,
             deck
         )
+    console.log(playerOneHand, playerTwoHand, playerThreeHand, playerFourHand)
 }
