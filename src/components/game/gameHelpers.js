@@ -11,13 +11,23 @@ export function dealAllPlayers(playerOneHand, playerTwoHand, playerThreeHand, pl
         cards --;
     }
 }
+
+export function dealOnePlayer(playerhand, setPlayerHand, deck) {
+    playerhand.push(deck[0]);
+    deck.splice(0, 1);
+    sortHand(playerhand, setPlayerHand);
+}
     
 export function startGame(setDeck, 
     buildDeck, 
-    playerOneHand,  
-    playerTwoHand,  
+    playerOneHand,
+    setPlayerOneHand,  
+    playerTwoHand,
+    setplayerTwoHand,  
     playerThreeHand,
+    setPlayerThreeHand,
     playerFourHand, 
+    setPlayerFourHand,
     deck) {
         playerOneHand.length = 0;
         playerTwoHand.length = 0;
@@ -32,18 +42,19 @@ export function startGame(setDeck,
             5,
             deck
         )
-    sortHand(playerOneHand);
-    sortHand(playerTwoHand);
-    sortHand(playerThreeHand);
-    sortHand(playerFourHand);
+    sortHand(playerOneHand, setPlayerOneHand);
+    sortHand(playerTwoHand, setplayerTwoHand);
+    sortHand(playerThreeHand, setPlayerThreeHand);
+    sortHand(playerFourHand, setPlayerFourHand);
 }
 
-export function sortHand(cards) {
-    cards.sort(function (a, b) {
+export function sortHand(playerHand, setPlayerHand) {
+    playerHand.sort(function (a, b) {
         if (a.suitIndex < b.suitIndex ||
-            (a.suitIndex === b.suitIndex && a.cardValue < b.cardValue)) {
+            (a.suitIndex === b.suitIndex && a.cardIndex < b.cardIndex)) {
             return -1;
         }
         return 1;
     });
+    setPlayerHand([...playerHand])
 }

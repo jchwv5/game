@@ -49,6 +49,7 @@ const buildDeck = () => {
           suitIndex: Math.floor(i / cards.length),
           suit: suits[Math.floor(i / cards.length)],
           cardValue: values[i % values.length],
+          cardIndex: i % cards.length,
           card: cards[i % cards.length]
         });
       }
