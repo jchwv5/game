@@ -1,6 +1,9 @@
 import shuffle from "./shuffle";
 
-
+/**
+ * Builds initial state of the game deck
+ * @returns shuffled deck of 52 cards
+ */
 const buildDeck = () => {
     let deck = [];
 
