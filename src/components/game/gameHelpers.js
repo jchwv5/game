@@ -10,5 +10,26 @@ export function dealAllPlayers(playerOneHand, playerTwoHand, playerThreeHand, pl
         deck.splice(0, 1)
         cards --;
     }
-    console.log(playerOneHand, playerTwoHand, playerThreeHand, playerFourHand)
+}
+    
+export function startGame(setDeck, 
+    buildDeck, 
+    playerOneHand,  
+    playerTwoHand,  
+    playerThreeHand,
+    playerFourHand, 
+    deck) {
+        playerOneHand.length = 0;
+        playerTwoHand.length = 0;
+        playerThreeHand.length = 0;
+        playerFourHand.length = 0;
+        setDeck(buildDeck);
+        dealAllPlayers(
+            playerOneHand,
+            playerTwoHand,
+            playerThreeHand,
+            playerFourHand,
+            5,
+            deck
+        )
 }

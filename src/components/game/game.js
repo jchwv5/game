@@ -1,43 +1,55 @@
-import {useEffect, useState} from 'react';
+import {useState, useEffect} from 'react';
 import buildDeck from '../deck/deck';
-import shuffle from '../deck/shuffle';
-import { dealAllPlayers } from './gameHelpers';
+import { startGame } from './gameHelpers';
 
 const Game = () => {
     const [playerOneHand, setPlayerOneHand] = useState([]);
     const [playerTwoHand, setPlayerTwoHand] = useState([]);
     const [playerThreeHand, setPlayerThreeHand] = useState([]);
-    const [playerfourHand, setPlayerFourHand] = useState([]);
+    const [playerFourHand, setPlayerFourHand] = useState([]);
     const [deck, setDeck] = useState([]);
 
     useEffect(() => {
         setDeck(buildDeck);
       }, []);
 
-    const startGame = () => {
-        setDeck(shuffle(deck))
-        dealAllPlayers(
-            playerOneHand,
-            playerTwoHand,
-            playerThreeHand,
-            playerfourHand,
-            5,
-            deck
-        )
-    }
-
     return (
         <div>
-            <button onClick={startGame}>Start Game</button>
-        <div>
+            <button onClick={() => startGame(
+                setDeck, 
+                buildDeck, 
+                playerOneHand, 
+                playerTwoHand, 
+                playerThreeHand, 
+                playerFourHand, 
+                deck)}>
+                Start Game
+                </button>
+            <div>
             Player One Hand
-            <div>{playerOneHand}</div>
+            <div>
+            {playerOneHand.length > 0 && playerOneHand.map((card) => (
+                <div>{card.card} of {card.suit}</div>
+            ))}
+            </div>
             Player Two Hand
-            <div>{playerTwoHand}</div>
+            <div>
+            {playerTwoHand.map((card) => (
+                <div>{card.card} of {card.suit}</div>
+            ))}
+            </div>
             Player Three Hand
-            <div>{playerThreeHand}</div>
+            <div>
+            {playerThreeHand.map((card) => (
+                <div>{card.card} of {card.suit}</div>
+            ))}
+            </div>
             Player Four Hand
-            <div>{playerfourHand}</div>
+            <div>
+            {playerFourHand.map((card) => (
+                <div>{card.card} of {card.suit}</div>
+            ))}
+            </div>
         </div>
         </div>
     )

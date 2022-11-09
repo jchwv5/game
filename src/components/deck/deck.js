@@ -1,3 +1,4 @@
+import shuffle from "./shuffle";
 
 
 const buildDeck = () => {
@@ -33,6 +34,7 @@ const buildDeck = () => {
                 }
                 deck.push(card);
             }
+            shuffle(deck);
         }
         return deck;
 }
