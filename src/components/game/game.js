@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import buildDeck from '../deck/deck';
-import { startGame } from './gameHelpers';
+import { sortHand, startGame } from './gameHelpers';
 import styles from './game.module.css'
 
 const Game = () => {
@@ -31,7 +31,7 @@ const Game = () => {
             Player One Hand
             </div>
             <div>
-            {playerOneHand.length > 0 && playerOneHand.map((card) => (
+            {playerOneHand.map((card) => (
                 <div>{card.card} of {card.suit}</div>
             ))}
             </div>

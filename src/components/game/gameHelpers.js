@@ -32,5 +32,18 @@ export function startGame(setDeck,
             5,
             deck
         )
-    console.log(playerOneHand, playerTwoHand, playerThreeHand, playerFourHand)
+    sortHand(playerOneHand);
+    sortHand(playerTwoHand);
+    sortHand(playerThreeHand);
+    sortHand(playerFourHand);
+}
+
+export function sortHand(cards) {
+    cards.sort(function (a, b) {
+        if (a.suitIndex < b.suitIndex ||
+            (a.suitIndex === b.suitIndex && a.cardValue < b.cardValue)) {
+            return -1;
+        }
+        return 1;
+    });
 }
